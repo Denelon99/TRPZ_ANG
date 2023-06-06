@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="logo">
+        <h1>Accounting System</h1>
+    </div>
+    <nav class="navbar">
+        <div class="dropdown">
+            <div class="dropbtn">exchange rate</div>
+            <div class="dropdown-content">
+                <ng-container *ngFor="let item of siteData">
+                    <li *ngIf="item.cc === 'USD' || item.cc === 'EUR'">
+                        <span>{{ item.txt }} {{ item.rate }}</span>
+                    </li>
+                </ng-container>
+            </div>
+        </div>
+        <button routerLink="/">Home</button>
+        <button routerLink="/about">About Us</button>
+        <button routerLink="/storages" *ngIf="authService.IsAutethenticated()">Storages</button>
+        <div *ngIf="!authService.IsAutethenticated()">
+            <button routerLink = "/registration">Login</button>
+        </div>
+        <div *ngIf="authService.IsAutethenticated()">
+            <button (click)="logout()">Logout</button>
+        </div>
+    </nav>
+</header>

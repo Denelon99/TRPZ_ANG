@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button (click)="createStorage()">Create Storage</button>
+    <button (click)="deleteStorage()">Delete Storage</button>
+    <div *ngFor="let storage of storage">
+      <button>{{ storage }}</button>
+    </div>
+</body>
+
+</html>

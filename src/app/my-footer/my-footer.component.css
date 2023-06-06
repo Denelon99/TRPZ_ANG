@@ -1,0 +1,15 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100; /* Add a higher z-index to ensure the footer is on top of other content */
+    width: 100%; /* Set width to 100% to cover the entire viewport */
+  }
+  
+  .footer p {
+    margin: 0;
+  }
