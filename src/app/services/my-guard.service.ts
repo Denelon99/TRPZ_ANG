@@ -7,10 +7,9 @@ export class MyGuardService implements CanActivate {
     constructor(private authService: AuthService, private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (this.authService.IsAutethenticated()) {
+        if (this.authService.isAuthenticated()) {
             return true;
         } else {
-            this.router.navigate(['']);
             return false;
         }
     }

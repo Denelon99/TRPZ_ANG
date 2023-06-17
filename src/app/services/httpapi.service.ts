@@ -5,11 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpapiService {
-  BASEURL = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
-  constructor(private http: HttpClient) { }
-  
-  getDate(): Observable<any> {
-    return this.http.get(this.BASEURL);
+export class HttpApiService {
+  private readonly baseUrl = 'http://localhost:3000/api/v1';
+  constructor(private http: HttpClient) {}
+
+  getUsers(): Observable<any[]> {
+    const url = `${this.baseUrl}/users.json`;
+    return this.http.get<any[]>(url);
+  }
+  getStorages(): Observable<any[]>{
+    const url = `${this.baseUrl}/storages.json`;
+    return this.http.get<any[]>(url);
   }
 }

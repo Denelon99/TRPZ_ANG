@@ -31,6 +31,8 @@ export class StoragesComponent implements OnInit {
     const savedStorage = localStorage.getItem('Storage');
     if (savedStorage) {
       this.storage = JSON.parse(savedStorage);
+    } else {
+      this.storage = [];
     }
   }
 }

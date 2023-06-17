@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpapiService } from '../services/httpapi.service';
+import { Router } from '@angular/router';
+import { HttpApiService } from '../services/httpapi.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,16 +9,23 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./my-header.component.css']
 })
 export class MyHeaderComponent {
-  siteData: undefined;
+  users: any[] | undefined;
 
-  constructor(private httpas: HttpapiService, public authService: AuthService) { }
-
+  constructor(
+    private HttpApiService: HttpApiService,
+    public authService: AuthService,
+    private router: Router
+  ) { }
   ngOnInit() {
-    this.httpas.getDate().subscribe((data) => {
-      this.siteData = data;
-    });
+    this.HttpApiService.getUsers().subscribe(
+      (data) => {
+        console.log('API Response:', data);
+        this.users = data;
+      },
+    );
   }
   logout() {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

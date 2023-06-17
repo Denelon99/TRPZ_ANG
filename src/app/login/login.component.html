@@ -1,0 +1,27 @@
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="login-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" formControlName="username" required>
+            </div>
+            <div *ngIf="formControls['username'].invalid && (formControls['username'].dirty || submitted)"
+                class="error-message">
+                <span *ngIf="formControls['username'].errors?.['required']">Username is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" required>
+            </div>
+            <div *ngIf="formControls['password'].invalid && (formControls['password'].dirty || submitted)" class="error-message">
+                <span *ngIf="formControls['password'].errors?.['required']">Password is required.</span>
+                <span *ngIf="formControls['password'].errors?.['minlength']">Password should be at least 6 characters long.</span>
+            </div>
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
+            <button type="submit" >Login</button>
+        </form>
+    </div>
+</body>
