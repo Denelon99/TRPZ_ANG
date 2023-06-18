@@ -14,6 +14,9 @@ import { AuthService } from './services/auth.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { AddStorageFormComponent } from './add-storage-form/add-storage-form.component';
+import { FormsModule } from '@angular/forms';
+import { GoodsComponent } from './goods/goods.component';
 
 
 @NgModule({
@@ -26,12 +29,15 @@ import { LoginComponent } from './login/login.component';
     StoragesComponent,
     RegistrationComponent,
     LoginComponent,
+    AddStorageFormComponent,
+    GoodsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [RouterModule],
   providers: [MyGuardService,AuthService],

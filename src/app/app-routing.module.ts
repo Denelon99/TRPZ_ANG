@@ -6,6 +6,8 @@ import { StoragesComponent } from './storages/storages.component';
 import { MyGuardService } from './services/my-guard.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
+import { AddStorageFormComponent } from './add-storage-form/add-storage-form.component';
+import { GoodsComponent } from './goods/goods.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'storages', component: StoragesComponent, canActivate: [MyGuardService] },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'creteStorage', component: AddStorageFormComponent},
+  { path: 'goods/:id', component: GoodsComponent}
 ];
 
 @NgModule({

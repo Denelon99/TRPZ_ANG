@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container h2 {
+    margin-bottom: 1rem;
+  }
+
+  .container form {
+    width: 300px;
+  }
+
+  .container form div {
+    margin-bottom: 1rem;
+  }
+
+  .container form label {
+    display: block;
+  }
+
+  .container form input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .container form button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  button {
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #ff5f5f;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

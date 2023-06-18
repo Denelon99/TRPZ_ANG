@@ -19,7 +19,6 @@ export class MyHeaderComponent {
   ngOnInit() {
     this.HttpApiService.getUsers().subscribe(
       (data) => {
-        console.log('API Response:', data);
         this.users = data;
       },
     );

@@ -2,11 +2,14 @@
 <html>
 
 <body>
-    <button (click)="createStorage()">Create Storage</button>
-    <button (click)="deleteStorage()">Delete Storage</button>
-    <div *ngFor="let storage of storage">
-      <button>{{ storage }}</button>
+  <div>
+    <button routerLink="/createStorage">Create Storage</button>
+  </div>
+  <div class="storageContainer">
+    <div *ngFor="let storage of storages" class="storageButton" (click)="openStorage(storage.id)">
+      <button>{{ storage.name }}</button>
     </div>
+  </div>
 </body>
 
 </html>

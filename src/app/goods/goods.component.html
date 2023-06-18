@@ -1,0 +1,21 @@
+<body>
+    <h2>Commodities in Storage {{ storage.name }}</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commodity of storage.commodities">
+          <td>{{ commodity.name }}</td>
+          <td>{{ commodity.price }}</td>
+          <td>{{ commodity.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+</body>
