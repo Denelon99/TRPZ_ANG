@@ -3,11 +3,14 @@
 
 <body>
   <div>
-    <button routerLink="/createStorage">Create Storage</button>
+    <button routerLink="/creteStorage" class="smallButton">Create Storage</button>
   </div>
   <div class="storageContainer">
-    <div *ngFor="let storage of storages" class="storageButton" (click)="openStorage(storage.id)">
-      <button>{{ storage.name }}</button>
+    <div *ngFor="let storage of storages" class="storageButton" >
+      <div class="buttonContainer">
+        <button class="nameButton" (click)="openStorage(storage.id)">{{ storage.name }}</button>
+        <button class="deleteButton" (click)="deleteStorage(storage.id)">X</button>
+      </div>
     </div>
   </div>
 </body>

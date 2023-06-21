@@ -1,21 +1,77 @@
 <body>
-    <h2>Commodities in Storage {{ storage.name }}</h2>
+  <div class="buttons">
+    <ng-container *ngIf="!isEditing">
+      <button class="edit-button" (click)="startEditing()">Edit</button>
+    </ng-container>
+    <ng-container *ngIf="isEditing">
+      <button class="save-button" (click)="saveChanges()">Save</button>
+    </ng-container>
+    <button class="back-button" (click)="goBack()">Go Back</button>
+  </div>
+  
+  <h2>
+    <ng-container *ngIf="!isEditing; else editNameMode">
+      {{ storage.name }}
+    </ng-container>
+    <ng-template #editNameMode>
+      <input type="text" [(ngModel)]="storage.name" [ngModelOptions]="{ standalone: true }">
+    </ng-template>
+  </h2>
+  
+  <h3>
+    <ng-container *ngIf="!isEditing; else editLocationMode">
+      Location Storage: {{ storage.location }}
+    </ng-container>
+    <ng-template #editLocationMode>
+      <input type="text" [(ngModel)]="storage.location" [ngModelOptions]="{ standalone: true }">
+    </ng-template>
+  </h3>
+  
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let commodity of storage.commodities">
+  <table class="commodities-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commodity of storage.commodities">
+        <ng-container *ngIf="commodity.editable; else readonlyRow">
+          <td><input type="text" [(ngModel)]="commodity.name"></td>
+          <td><input type="number" [(ngModel)]="commodity.price"></td>
+          <td><input type="number" [(ngModel)]="commodity.quantity"></td>
+          <td>
+            <button (click)="saveCommodity(commodity)" class="save">Save</button>
+          </td>
+        </ng-container>
+        <ng-template #readonlyRow>
           <td>{{ commodity.name }}</td>
           <td>{{ commodity.price }}</td>
           <td>{{ commodity.quantity }}</td>
-        </tr>
-      </tbody>
-    </table>
-    
+          <td>
+            <button (click)="editCommodity(commodity)" class="edit">Edit</button>
+            <button (click)="removeCommodity(commodity.id)" class="delete">Delete</button>
+          </td>
+        </ng-template>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" id="name" name="name" required [(ngModel)]="commodityData.name">
+        </td>
+        <td>
+          <input type="number" id="price" name="price" required [(ngModel)]="commodityData.price">
+        </td>
+        <td>
+          <input type="number" id="quantity" name="quantity" required [(ngModel)]="commodityData.quantity">
+        </td>
+        <td>
+          <button type="submit" class="add-commodity-button" (click)="addCommodity()">Add Commodity</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>

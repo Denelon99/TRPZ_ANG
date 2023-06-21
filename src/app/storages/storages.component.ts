@@ -31,4 +31,16 @@ export class StoragesComponent implements OnInit {
   openStorage(storageId: number) {
     this.router.navigate(['/goods', storageId]);
   }
+  
+  deleteStorage(storageId: number) {
+    this.storageService.removeStorage(storageId).subscribe(
+      (response) => {
+        console.log('Storage deleted successfully:', response);
+        this.loadStorage();
+      },
+      (error) => {
+        console.log('Error deleting storage:', error);
+      }
+    );
+  }
 }
